@@ -286,7 +286,7 @@ export default function Home() {
   const paginatedData = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
-    <div className="min-h-screen text-slate-100 flex flex-col justify-between py-[46px] px-[62px] relative bg-[#0A192F]">
+    <div className="min-h-screen text-slate-100 flex flex-col justify-between  max-w-[1400px] py-[46px] px-[62px] relative bg-[#0A192F]">
       <div className="w-full mx-auto">
         <h1 className="text-[#CCD6F6] text-5xl m-4 font-bold">
           What's Your Superpower?
