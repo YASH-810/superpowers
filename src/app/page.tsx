@@ -280,18 +280,18 @@ export default function Home() {
     return matchesCategory && matchesSearch;
   });
 
-  const ITEMS_PER_PAGE = 6;
+  const ITEMS_PER_PAGE = 8;
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const paginatedData = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
     <div className="min-h-screen text-slate-100 flex flex-col justify-between py-12 px-6 relative bg-[#0A192F]">
-      <div className="max-w-6xl w-full mx-auto">
-        <h1 className="text-[#CCD6F6] text-5xl m-4 font-bold justify-center text-center">
+      <div className="w-full mx-auto">
+        <h1 className="text-[#CCD6F6] text-5xl m-4 font-bold">
           What's Your Superpower?
         </h1>
-        <p className="justify-center text-center text-[#58E2C5] text-xl font-semibold mb-12">
+        <p className="text-[#58E2C5] text-xl font-semibold ml-4  mb-12">
           Unlock True Potential of your MES ID
         </p>
 
@@ -309,7 +309,7 @@ export default function Home() {
                     setFlippedCardIndex(null); // Reset flip state when category changes
                     setCurrentPage(1); // Reset page on category filter change
                   }}
-                  className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider transition-all duration-300 cursor-pointer ${
+                  className={`px-4 py-2 rounded-md text-xs font-bold tracking-wider transition-all duration-300 cursor-pointer ${
                     isActive
                       ? 'bg-[#58E2C5] text-[#0A192F] shadow-[0_0_15px_rgba(88,226,197,0.3)]'
                       : 'bg-[#112240]/40 text-[#8892B0] border border-slate-800 hover:border-slate-700 hover:text-[#CCD6F6]'
@@ -337,7 +337,7 @@ export default function Home() {
                 setFlippedCardIndex(null); // Reset flip state when search query changes
                 setCurrentPage(1); // Reset page on search filter change
               }}
-              className="w-full bg-[#112240]/20 hover:bg-[#112240]/40 focus:bg-[#112240]/60 border border-slate-800 focus:border-[#58E2C5]/50 text-xs font-semibold tracking-wider text-[#CCD6F6] placeholder-slate-500 rounded-lg pl-10 pr-4 py-2.5 outline-none transition-all duration-300"
+              className="w-full bg-[#112240]/20 hover:bg-[#112240]/40 focus:bg-[#112240]/60 border border-slate-800 focus:border-[#58E2C5]/50 text-xs font-semibold tracking-wider text-[#CCD6F6] placeholder-slate-500 rounded-md pl-10 pr-4 py-2.5 outline-none transition-all duration-300"
             />
           </div>
         </div>
@@ -345,31 +345,25 @@ export default function Home() {
         {/* Cards Grid */}
         {filteredData.length > 0 ? (
           <div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-5">
               {paginatedData.map((platform, index) => {
                 const isFlipped = flippedCardIndex === index;
                 return (
                   <div
-                    className="h-[430px] w-full [perspective:1000px] cursor-pointer select-none relative z-0 group"
+                    className="h-[390px] w-full [perspective:1000px] cursor-pointer select-none relative z-0 group"
                     key={index}
                     onClick={() => handleCardToggle(index)}
                   >
                     {/* Green offset border behind card */}
-                    <div className="absolute top-3 left-3 w-full h-full border-2 border-[#58E2C5]/60 rounded-xl transition-colors duration-300 pointer-events-none -z-10" />
+                    <div className="absolute top-3 left-3 w-full h-full border-2 border-[#58E2C5]/60 rounded-md transition-colors duration-300 pointer-events-none -z-10" />
 
                     <div className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
                       isFlipped ? "[transform:rotateY(180deg)]" : ""
                     }`}>
                       {/* Front Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-xl border border-slate-800 bg-[#16274b] p-6 flex flex-col items-center justify-between [backface-visibility:hidden] hover:border-[#58E2C5]/30 transition-all duration-300 shadow-lg group">
-                        <div className="w-full flex justify-start items-center opacity-65">
-                          <span className="bg-[#112240]/60 border border-slate-800 text-[10px] font-bold tracking-wider px-2.5 py-1 rounded text-slate-400 uppercase">
-                            {platform.category}
-                          </span>
-                        </div>
-
+                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#16274b] p-6 flex flex-col items-center justify-between [backface-visibility:hidden] hover:border-[#58E2C5]/30 transition-all duration-300 shadow-lg group">
                         <div className="flex flex-col items-center justify-center flex-grow py-4">
-                          <div className="w-24 h-24 rounded-2xl bg-[#0b121f] border border-slate-800 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-[#58E2C5]/20 group-hover:shadow-[0_0_25px_rgba(88,226,197,0.12)] transition-all duration-500">
+                          <div className="w-24 h-24 rounded-md bg-[#0b121f] border border-slate-800 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-[#58E2C5]/20 group-hover:shadow-[0_0_25px_rgba(88,226,197,0.12)] transition-all duration-500">
                             {getLogo(platform.ref, "w-14 h-14")}
                           </div>
                           <h2 className="text-[#CCD6F6] text-xl font-bold text-center group-hover:text-white transition-colors duration-300 px-4">
@@ -377,35 +371,35 @@ export default function Home() {
                           </h2>
                         </div>
 
-                        <div className="w-full py-2.5 rounded-lg text-center text-[10px] font-bold tracking-widest text-[#8892B0] group-hover:text-[#58E2C5] transition-all duration-300 uppercase">
+                        <div className="w-full py-2.5 rounded-md text-center text-[10px] font-bold tracking-widest text-[#8892B0] group-hover:text-[#58E2C5] transition-all duration-300 uppercase">
                           Click to Reveal
                         </div>
                       </div>
 
                       {/* Back Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-xl border border-slate-800 bg-[#0e1626] p-6 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 hover:border-[#58E2C5]/20">
+                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#0e1626] p-5 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 hover:border-[#58E2C5]/20">
                         <div>
                           {/* Header Row */}
-                          <div className="flex justify-start items-center mb-5">
-                            <span className="bg-[#58E2C5]/10 border border-[#58E2C5]/20 text-[#58E2C5] text-[10px] font-bold tracking-wider px-2.5 py-1 rounded uppercase">
+                          <div className="flex justify-start items-center mb-3">
+                            <span className="bg-[#58E2C5]/10 border border-[#58E2C5]/20 text-[#58E2C5] text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-md uppercase">
                               {platform.category}
                             </span>
                           </div>
 
                           {/* Title & Description */}
-                          <h2 className="text-[#CCD6F6] text-2xl font-bold mb-3 tracking-tight">
+                          <h2 className="text-[#CCD6F6] text-xl font-bold mb-1.5 tracking-tight">
                             {platform.title}
                           </h2>
-                          <p className="text-[#8892B0] text-xs leading-relaxed mb-6">
+                          <p className="text-[#8892B0] text-xs leading-relaxed mb-3.5 line-clamp-3">
                             {platform.description}
                           </p>
 
                           {/* Chapter Benefits */}
-                          <div className="mb-6">
-                            <h3 className="text-[#8892B0]/80 text-[10px] font-bold tracking-widest uppercase mb-3">
+                          <div className="mb-4">
+                            <h3 className="text-[#8892B0]/80 text-[10px] font-bold tracking-widest uppercase mb-2">
                               CHAPTER BENEFITS
                             </h3>
-                            <ul className="space-y-2">
+                            <ul className="space-y-1.5">
                               {platform.benefits.map((benefit, bIndex) => (
                                 <li key={bIndex} className="flex items-start text-xs text-[#CCD6F6]">
                                   <span className="text-[#58E2C5] font-semibold mr-2.5 select-none">&gt;</span>
@@ -422,7 +416,7 @@ export default function Home() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="w-full bg-[#182235] hover:bg-[#1b273f] text-[#CCD6F6] hover:text-[#58E2C5] border border-slate-800 hover:border-[#58E2C5]/30 font-bold py-2.5 px-4 rounded-lg text-center text-[10px] tracking-widest transition-all duration-300 flex items-center justify-between cursor-pointer"
+                          className="w-full bg-[#182235] hover:bg-[#1b273f] text-[#CCD6F6] hover:text-[#58E2C5] border border-slate-800 hover:border-[#58E2C5]/30 font-bold py-2.5 px-4 rounded-md text-center text-[10px] tracking-widest transition-all duration-300 flex items-center justify-between cursor-pointer"
                         >
                           <span>REDEEM POWER</span>
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -442,7 +436,7 @@ export default function Home() {
                 <button
                   onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
-                  className={`p-2.5 rounded-lg border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
+                  className={`p-2.5 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
                     currentPage === 1
                       ? 'border-slate-800/55 text-slate-600 bg-[#112240]/10 cursor-not-allowed'
                       : 'border-slate-800 text-[#8892B0] bg-[#112240]/40 hover:border-slate-700 hover:text-[#CCD6F6]'
@@ -459,7 +453,7 @@ export default function Home() {
                     <button
                       key={page}
                       onClick={() => handlePageChange(page)}
-                      className={`w-10 h-10 rounded-lg border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
+                      className={`w-10 h-10 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
                         isActive
                           ? 'bg-[#58E2C5] text-[#0A192F] border-[#58E2C5] shadow-[0_0_15px_rgba(88,226,197,0.3)]'
                           : 'border-slate-800 text-[#8892B0] bg-[#112240]/40 hover:border-slate-700 hover:text-[#CCD6F6]'
@@ -473,7 +467,7 @@ export default function Home() {
                 <button
                   onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
-                  className={`p-2.5 rounded-lg border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
+                  className={`p-2.5 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
                     currentPage === totalPages
                       ? 'border-slate-800/55 text-slate-600 bg-[#112240]/10 cursor-not-allowed'
                       : 'border-slate-800 text-[#8892B0] bg-[#112240]/40 hover:border-slate-700 hover:text-[#CCD6F6]'
