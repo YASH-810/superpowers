@@ -574,7 +574,7 @@ export default function Home() {
                       </div>
 
                       {/* Back Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#0e1626] p-4 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 hover:border-[#58E2C5]/20 overflow-hidden">
+                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#0e1626] p-4 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 hover:border-[#58E2C5]/20 overflow-hidden">
                         <div className="flex-1 overflow-hidden">
                           {/* Header Row */}
                           <div className="flex justify-start items-center mb-2">
@@ -584,10 +584,10 @@ export default function Home() {
                           </div>
 
                           {/* Title & Description */}
-                          <h2 className="text-[#CCD6F6] text-sm font-bold mb-1 tracking-tight line-clamp-1">
+                          <h2 className="text-[#CCD6F6] text-sm font-bold mb-1 tracking-tight">
                             {platform.title}
                           </h2>
-                          <p className="text-[#8892B0] text-[11px] leading-snug mb-2 line-clamp-2">
+                          <p className="text-[#8892B0] text-[11px] leading-snug mb-2">
                             {platform.description}
                           </p>
 
@@ -600,7 +600,7 @@ export default function Home() {
                               {platform.benefits.slice(0, 3).map((benefit, bIndex) => (
                                 <li key={bIndex} className="flex items-start text-[11px] text-[#CCD6F6]">
                                   <span className="text-[#58E2C5] font-semibold mr-2 select-none">&gt;</span>
-                                  <span className="leading-tight line-clamp-1">{benefit}</span>
+                                  <span className="leading-tight">{benefit}</span>
                                 </li>
                               ))}
                             </ul>
