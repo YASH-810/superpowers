@@ -12,7 +12,7 @@ interface Platform {
 }
 
 const data: Platform[] = [
-    {
+  {
     category: "DEV TOOLS",
     logo: "/logo/github.png",
     title: "GitHub Student Developer Pack",
@@ -487,12 +487,32 @@ export default function Home() {
   return (
     <div className="min-h-screen text-slate-100 flex flex-col justify-between py-[46px] px-[62px] relative bg-[#0A192F]">
       <div className="w-full mx-auto">
-        <h1 className="text-[#CCD6F6] text-5xl m-4 font-bold">
-          What's Your Superpower?
-        </h1>
-        <p className="text-[#58E2C5] text-xl font-semibold ml-4  mb-12">
-          Unlock True Potential of your MES ID
-        </p>
+        {/* Simplified Hero Header */}
+        <div className="relative w-full mb-10 lg:mb-14  bg-[#112240]/40  rounded-md p-8 lg:p-12 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 transition-colors duration-500 ">
+
+          {/* Subtle background accent */}
+          {/* <div className="absolute top-0 right-0 w-80 h-80 bg-[#58E2C5] rounded-full mix-blend-screen filter blur-[150px] opacity-[0.06] pointer-events-none" /> */}
+
+          {/* Text Content */}
+          <div className="flex-1 w-full relative z-10 text-center md:text-left">
+            <h1 className="text-[#CCD6F6] text-4xl sm:text-5xl lg:text-5xl font-extrabold tracking-tight mb-4">
+              What's Your <span className="text-[#58E2C5]">Superpower?</span>
+            </h1>
+            <p className="text-[#8892B0] text-sm sm:text-base lg:text-lg font-medium max-w-xl mx-auto md:mx-0">
+              Unlock the true potential of your <span className="text-white font-semibold">MES / Pillai University ID</span>. Everything you need—free for students.
+            </p>
+          </div>
+
+          {/* Logo Display */}
+          <div className="relative z-10 shrink-0 w-full border border-slate-700/50 p-5 rounded-xl md:w-auto flex justify-center md:justify-end">
+            <img
+              src="/logo/PillaiUnivLogo1.png"
+              alt="Pillai University Logo"
+              className="h-16 sm:h-20 lg:h-24 w-auto object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-105"
+              onError={(e) => { e.currentTarget.style.display = 'none' }}
+            />
+          </div>
+        </div>
 
         {/* Filters and Search Row */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10 px-5">
@@ -508,11 +528,10 @@ export default function Home() {
                     setFlippedCardIndex(null); // Reset flip state when category changes
                     setCurrentPage(1); // Reset page on category filter change
                   }}
-                  className={`px-4 py-2 rounded-md text-xs font-bold tracking-wider transition-all duration-300 cursor-pointer ${
-                    isActive
+                  className={`px-4 py-2 rounded-md text-xs font-bold tracking-wider transition-all duration-300 cursor-pointer ${isActive
                       ? 'bg-[#58E2C5] text-[#0A192F] shadow-[0_0_15px_rgba(88,226,197,0.3)]'
                       : 'bg-[#112240]/40 text-[#8892B0] border border-slate-800 hover:border-slate-700 hover:text-[#CCD6F6]'
-                  }`}
+                    }`}
                 >
                   {category}
                 </button>
@@ -554,11 +573,10 @@ export default function Home() {
                     onClick={() => handleCardToggle(index)}
                   >
 
-                    <div className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
-                      isFlipped ? "[transform:rotateY(180deg)]" : ""
-                    }`}>
+                    <div className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${isFlipped ? "[transform:rotateY(180deg)]" : ""
+                      }`}>
                       {/* Front Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#16274b] p-6 flex flex-col items-center justify-between [backface-visibility:hidden] hover:border-[#58E2C5]/30 transition-all duration-300 shadow-lg group">
+                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800  bg-[#112240]/40 p-6 flex flex-col items-center justify-between [backface-visibility:hidden]  transition-all duration-300 shadow-lg group">
                         <div className="flex flex-col items-center justify-center flex-grow py-4">
                           <div className="w-28 h-28 flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500">
                             <img src={platform.logo} alt={platform.title} className="w-16 h-16 object-contain" />
@@ -568,13 +586,13 @@ export default function Home() {
                           </h2>
                         </div>
 
-                        <div className="w-full py-2.5 rounded-md text-center text-[10px] font-bold tracking-widest text-[#8892B0] group-hover:text-[#58E2C5] transition-all duration-300 uppercase">
+                        <div className="w-full py-2.5 rounded-md text-center text-[10px] font-bold tracking-widest text-[#58E2C5] transition-all duration-300 uppercase">
                           Click to Reveal
                         </div>
                       </div>
 
                       {/* Back Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#0e1626] p-4 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 hover:border-[#58E2C5]/20 overflow-hidden">
+                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#112240]/40 p-4 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300  overflow-hidden">
                         <div className="flex-1 overflow-hidden">
                           {/* Header Row */}
                           <div className="flex justify-start items-center mb-2">
@@ -633,11 +651,10 @@ export default function Home() {
                 <button
                   onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                   disabled={currentPage === 1}
-                  className={`p-2.5 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
-                    currentPage === 1
+                  className={`p-2.5 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${currentPage === 1
                       ? 'border-slate-800/55 text-slate-600 bg-[#112240]/10 cursor-not-allowed'
                       : 'border-slate-800 text-[#8892B0] bg-[#112240]/40 hover:border-slate-700 hover:text-[#CCD6F6]'
-                  }`}
+                    }`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -650,11 +667,10 @@ export default function Home() {
                     <button
                       key={page}
                       onClick={() => handlePageChange(page)}
-                      className={`w-10 h-10 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
-                        isActive
+                      className={`w-10 h-10 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${isActive
                           ? 'bg-[#58E2C5] text-[#0A192F] border-[#58E2C5] shadow-[0_0_15px_rgba(88,226,197,0.3)]'
                           : 'border-slate-800 text-[#8892B0] bg-[#112240]/40 hover:border-slate-700 hover:text-[#CCD6F6]'
-                      }`}
+                        }`}
                     >
                       {page}
                     </button>
@@ -664,11 +680,10 @@ export default function Home() {
                 <button
                   onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                   disabled={currentPage === totalPages}
-                  className={`p-2.5 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${
-                    currentPage === totalPages
+                  className={`p-2.5 rounded-md border text-xs font-bold transition-all duration-300 flex items-center justify-center cursor-pointer ${currentPage === totalPages
                       ? 'border-slate-800/55 text-slate-600 bg-[#112240]/10 cursor-not-allowed'
                       : 'border-slate-800 text-[#8892B0] bg-[#112240]/40 hover:border-slate-700 hover:text-[#CCD6F6]'
-                  }`}
+                    }`}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
