@@ -36,7 +36,7 @@ const data: Platform[] = [
   {
     category: "LEARNING",
     logo: "/logo/perplexity.png",
-    title: "Perplexity AI",
+    title: "Perplexity",
     description: "Perplexity Student Pack gives students access to Perplexity Pro and the Comet AI browser for research and study.",
     benefits: [
       "Access to Perplexity Pro & Comet AI browser",
@@ -121,7 +121,7 @@ const data: Platform[] = [
   {
     category: "PRODUCTIVITY",
     logo: "/logo/onedrive.png",
-    title: "Microsoft OneDrive",
+    title: "OneDrive",
     description: "Robust and simple-to-use cloud storage platform provided via Office 365 for managing and backup up files.",
     benefits: [
       "Included with student Office 365 account",
@@ -158,7 +158,7 @@ const data: Platform[] = [
   {
     category: "DEV TOOLS",
     logo: "/logo/unity.png",
-    title: "Unity Student Plan",
+    title: "Unity",
     description: "Real-time 3D development platform for building 2D/3D games, VR/AR, and interactive experiences.",
     benefits: [
       "Latest version of Unity Pro Editor",
@@ -279,7 +279,7 @@ const data: Platform[] = [
   {
     category: "LEARNING",
     logo: "/logo/wolframalpha.png",
-    title: "Wolfram Alpha Pro",
+    title: "Wolfram Alpha",
     description: "Computational knowledge engine providing step-by-step solutions for math, physics, and engineering.",
     benefits: [
       "Free Pro account with .edu / .ac.in email",
@@ -327,7 +327,7 @@ const data: Platform[] = [
   {
     category: "LIFESTYLE",
     logo: "/logo/dell.png",
-    title: "Dell Student Store",
+    title: "Dell Student",
     description: "Exclusive student discount program on Dell laptops, desktop computers, and tech accessories.",
     benefits: [
       "Seasonal student discounts on laptops",
@@ -339,7 +339,7 @@ const data: Platform[] = [
   {
     category: "LIFESTYLE",
     logo: "/logo/hp.png",
-    title: "HP Education Store",
+    title: "HP Student",
     description: "Dedicated education discounts on HP laptops, desktop computers, printers, and accessories.",
     benefits: [
       "Discounted student pricing on HP laptops",
@@ -375,7 +375,7 @@ const data: Platform[] = [
   {
     category: "PRODUCTIVITY",
     logo: "/logo/dropbox.png",
-    title: "Dropbox Education",
+    title: "Dropbox",
     description: "Secure cloud storage, backup, and collaboration tools tailored for managing coursework efficiently.",
     benefits: [
       "Student discount via school partnerships",
@@ -387,7 +387,7 @@ const data: Platform[] = [
   {
     category: "LIFESTYLE",
     logo: "/logo/youtube.png",
-    title: "YouTube Premium",
+    title: "YouTube",
     description: "Ad-free YouTube experience with background playback, offline downloads, and YouTube Music.",
     benefits: [
       "1-month free trial for students",

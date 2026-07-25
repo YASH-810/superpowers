@@ -38,7 +38,7 @@ export default function Home() {
   const paginatedData = filteredData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
-    <div className="min-h-screen text-slate-100 flex flex-col justify-between py-[46px] px-4 md:px-8 lg:px-16 xl:px-24 relative bg-[#0A192F]">
+    <div className="min-h-screen text-slate-100 flex flex-col justify-between py-[46px] px-4 md:px-8 lg:px-[80px] relative bg-[#0A192F]">
       <div className="w-full mx-auto">
         {/* Header Bar */}
         <header className="flex items-center justify-between gap-5 my-8 px-4 md:px-0">
@@ -112,12 +112,12 @@ export default function Home() {
         {/* Cards Grid */}
         {filteredData.length > 0 ? (
           <div>
-            <div className="flex flex-wrap justify-center gap-6 p-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 p-5 justify-items-center">
               {paginatedData.map((platform, index) => {
                 const isFlipped = flippedCardIndex === index;
                 return (
                   <div
-                    className="h-[310px] w-[290px] [perspective:1000px] cursor-pointer select-none relative z-0 group"
+                    className="h-[310px] w-[270px] [perspective:1000px] border-[#58E2C5] cursor-pointer select-none relative z-0 group"
                     key={index}
                     onClick={() => handleCardToggle(index)}
                   >
@@ -125,7 +125,7 @@ export default function Home() {
                     <div className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${isFlipped ? "[transform:rotateY(180deg)]" : ""
                       }`}>
                       {/* Front Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800  bg-[#112240]/40 p-6 flex flex-col items-center justify-between [backface-visibility:hidden]  transition-all duration-300 shadow-lg group">
+                      <div className="absolute inset-0 w-full h-full rounded-md border-2 border-[#58E2C5]/20 bg-[#112240]/40 p-6 flex flex-col items-center justify-between [backface-visibility:hidden] transition-all duration-300 shadow-lg group">
                         <div className="flex flex-col items-center justify-center flex-grow py-4">
                           <div className="w-28 h-28 flex items-center justify-center mb-6 ransition-all duration-500">
                             <img src={platform.logo} alt={platform.title} className="w-18 h-18 object-contain" />
@@ -141,7 +141,7 @@ export default function Home() {
                       </div>
 
                       {/* Back Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#112240]/40 p-4 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300  overflow-hidden">
+                      <div className="absolute inset-0 w-full h-full rounded-md border border-[#58E2C5] bg-[#112240]/40 p-4 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 overflow-hidden">
                         <div className="flex-1 overflow-hidden">
                           {/* Header Row */}
                           <div className="flex justify-start items-center mb-2">
