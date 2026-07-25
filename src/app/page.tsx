@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import data from "@/app/constants";
+import { Courier_Prime } from "next/font/google";
 
+const courierPrime = Courier_Prime({ weight: ["400", "700"], subsets: ["latin"] });
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -130,7 +132,7 @@ export default function Home() {
                           <div className="w-28 h-28 flex items-center justify-center mb-6 ransition-all duration-500">
                             <img src={platform.logo} alt={platform.title} className="w-18 h-18 object-contain" />
                           </div>
-                          <h2 className="text-[#CCD6F6] text-[22px] font-bold text-center group-hover:text-white transition-colors duration-300 px-4">
+                          <h2 className={`text-[#CCD6F6] text-[20px] font-bold text-center  transition-colors duration-300 px-4 ${courierPrime.className}`}>
                             {platform.title}
                           </h2>
                         </div>
@@ -151,7 +153,7 @@ export default function Home() {
                           </div>
 
                           {/* Title & Description */}
-                          <h2 className="text-[#CCD6F6] text-xl font-bold mb-1 tracking-tight">
+                          <h2 className={`text-[#CCD6F6] text-xl font-bold mb-1 tracking-tight ${courierPrime.className}`}>
                             {platform.title}
                           </h2>
                           <p className="text-[#8892B0] text-[14px] leading-snug mb-2">
