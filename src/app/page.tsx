@@ -5,253 +5,451 @@ import { useState } from "react";
 interface Platform {
   title: string;
   category: 'DEV TOOLS' | 'DESIGN' | 'PRODUCTIVITY' | 'LEARNING' | 'LIFESTYLE';
-  ref: string;
+  logo: string;
   description: string;
   benefits: string[];
   link: string;
 }
 
 const data: Platform[] = [
-  {
+    {
     category: "DEV TOOLS",
-    ref: "GITHUB",
-    title: "GitHub Student Pack",
-    description: "The best developer tools, free for students. Includes GitHub Pro, specialized packs, and partner offers.",
+    logo: "/logo/github.png",
+    title: "GitHub Student Developer Pack",
+    description: "Get free access to the best developer tools, cloud services, and resources based on Git Version Control.",
     benefits: [
-      "Collaborate on software projects",
-      "Track and merge changes",
-      "Free GitHub Pro while you are a student"
+      "Based on Git Version Control system",
+      "Collaborate on software development projects",
+      "Track and merge changes seamlessly",
+      "Easily revert to earlier versions if needed"
     ],
     link: "https://education.github.com/pack"
   },
   {
     category: "DEV TOOLS",
-    ref: "AZURE",
-    title: "Azure Cloud Services",
-    description: "Invent with purpose with Microsoft Azure's open and flexible cloud computing platform.",
+    logo: "/logo/azure.png",
+    title: "Microsoft Azure",
+    description: "Invent with purpose and realize cost savings with Microsoft Azure's open and flexible cloud computing platform.",
     benefits: [
-      "Cloud computing resources",
-      "Free credits for students",
-      "Learn industry-standard cloud platform"
+      "Free cloud compute credits for students",
+      "Open and flexible cloud computing platform",
+      "Access to popular developer cloud services"
     ],
-    link: "https://azure.microsoft.com/free/students"
+    link: "https://portal.azure.com/"
   },
   {
-    category: "PRODUCTIVITY",
-    ref: "PERPLEXITY",
+    category: "LEARNING",
+    logo: "/logo/perplexity.png",
     title: "Perplexity AI",
-    description: "Access to Perplexity Pro and Comet AI browser for enhanced research and study.",
+    description: "Perplexity Student Pack gives students access to Perplexity Pro and the Comet AI browser for research and study.",
     benefits: [
-      "Premium AI models",
-      "Unlimited Pro searches",
-      "Study tools like flashcards"
+      "Access to Perplexity Pro & Comet AI browser",
+      "Includes all premium AI models",
+      "Unlimited Pro searches and file uploads",
+      "Interactive study tools like flashcards and quizzes"
     ],
-    link: "https://www.perplexity.ai"
-  },
-  {
-    category: "DESIGN",
-    ref: "FIGMA",
-    title: "Figma Education",
-    description: "Professional design tools for students and educators. Design, prototype, and collaborate in real-time.",
-    benefits: [
-      "Free Professional plan",
-      "Shared team libraries",
-      "Unlimited projects and files"
-    ],
-    link: "https://www.figma.com/education"
+    link: "https://www.perplexity.ai/students"
   },
   {
     category: "DEV TOOLS",
-    ref: "JETBRAINS",
-    title: "JetBrains IDEs",
-    description: "Free access to professional developer tools including IntelliJ IDEA, WebStorm, PyCharm, and more.",
+    logo: "/logo/arduino.png",
+    title: "Arduino",
+    description: "Learn electronics and programming with discounted kits and educational tools ideal for STEM projects.",
     benefits: [
-      "All JetBrains IDEs included",
-      "Free annual renewals",
-      "Use for educational projects"
+      "Discounted kits and educational tools",
+      "Learn electronics and programming",
+      "Ideal for hands-on STEM projects and prototyping"
+    ],
+    link: "https://www.arduino.cc/education/github-students/"
+  },
+  {
+    category: "DESIGN",
+    logo: "/logo/autocad.png",
+    title: "AutoCAD & Autodesk",
+    description: "Computer-aided design software used by engineers, architects, and construction professionals to create 2D/3D models.",
+    benefits: [
+      "Free educational software license",
+      "Create 2D and 3D models of buildings and structures",
+      "Industry-standard tools for engineers and architects"
+    ],
+    link: "https://www.autodesk.com/education/edu-software/overview"
+  },
+  {
+    category: "DESIGN",
+    logo: "/logo/figma.png",
+    title: "Figma",
+    description: "Collaborative interface design tool for creating UI/UX designs, wireframes, vector graphics, and prototypes.",
+    benefits: [
+      "Free Figma Pro for students & educators",
+      "Real-time team collaboration on design projects",
+      "Advanced interactive prototyping tools"
+    ],
+    link: "https://www.figma.com/education/"
+  },
+  {
+    category: "DESIGN",
+    logo: "/logo/canva.png",
+    title: "Canva",
+    description: "Graphic design platform for creating presentations, social media graphics, posters, and visual content easily.",
+    benefits: [
+      "Free Pro version for students and educators",
+      "Access to millions of premium templates and assets",
+      "Drag-and-drop presentation and graphic design"
+    ],
+    link: "https://www.canva.com/education/students/"
+  },
+  {
+    category: "DESIGN",
+    logo: "/logo/adobe.png",
+    title: "Adobe Creative Cloud",
+    description: "Suite of premium apps for image editing, illustration, video editing, sound design, PDFs, and fonts.",
+    benefits: [
+      "Special student discount pricing",
+      "Includes Photoshop, Illustrator, Premiere Pro & more",
+      "Access to Adobe Fonts and cloud storage"
+    ],
+    link: "https://www.adobe.com/in/creativecloud/buy/students.html"
+  },
+  {
+    category: "PRODUCTIVITY",
+    logo: "/logo/microsoft365.png",
+    title: "Microsoft 365",
+    description: "Suite of productivity tools including Word, Excel, PowerPoint, and Teams for coursework and collaboration.",
+    benefits: [
+      "Free access to Office 365 web and desktop apps",
+      "Real-time document collaboration",
+      "Essential productivity tools for students"
+    ],
+    link: "https://www.microsoft.com/en-us/education/products/office"
+  },
+  {
+    category: "PRODUCTIVITY",
+    logo: "/logo/onedrive.png",
+    title: "Microsoft OneDrive",
+    description: "Robust and simple-to-use cloud storage platform provided via Office 365 for managing and backup up files.",
+    benefits: [
+      "Included with student Office 365 account",
+      "Secure cloud storage and file sync",
+      "Free premium courses via select universities"
+    ],
+    link: "https://www.microsoft.com/en-in/microsoft-365/onedrive/graduation"
+  },
+  {
+    category: "PRODUCTIVITY",
+    logo: "/logo/googleone.png",
+    title: "Google One (Gemini AI)",
+    description: "Get access to Google's most powerful AI tools along with 2 TB of cloud storage across Google apps.",
+    benefits: [
+      "Gemini 2.5 Pro & Veo 3 Fast AI models",
+      "Gemini built into Google Docs, Gmail, and Workspace",
+      "Advanced tools like Flow AI filmmaking & NotebookLM",
+      "2 TB Cloud Storage for Photos, Drive, and Gmail"
+    ],
+    link: "https://gemini.google/students/"
+  },
+  {
+    category: "DEV TOOLS",
+    logo: "/logo/intel.png",
+    title: "Intel DevCloud",
+    description: "Free access to AI/ML compute resources within Intel's cloud-based development environment.",
+    benefits: [
+      "Free access to AI/ML cloud compute resources",
+      "Featuring high-performance CPUs, GPUs, and FPGAs",
+      "Ideal for testing AI, HPC, and edge computing projects"
+    ],
+    link: "https://www.intel.com/content/www/us/en/developer/tools/devcloud/overview.html"
+  },
+  {
+    category: "DEV TOOLS",
+    logo: "/logo/unity.png",
+    title: "Unity Student Plan",
+    description: "Real-time 3D development platform for building 2D/3D games, VR/AR, and interactive experiences.",
+    benefits: [
+      "Latest version of Unity Pro Editor",
+      "20% off all assets in the Unity Asset Store",
+      "Free Odin Inspector and Validator license",
+      "Synty asset bundle and Unity Cloud access"
+    ],
+    link: "https://unity.com/products/unity-student"
+  },
+  {
+    category: "LEARNING",
+    logo: "/logo/coursera.png",
+    title: "Coursera",
+    description: "Access free or discounted courses from top universities and companies covering technology and business.",
+    benefits: [
+      "Free or discounted courses from top universities",
+      "Covers Data Science, Business, and Tech",
+      "Build skills and earn professional certificates"
+    ],
+    link: "https://www.coursera.org"
+  },
+  {
+    category: "DEV TOOLS",
+    logo: "/logo/replit.png",
+    title: "Replit",
+    description: "Powerful online IDE to write, run, and deploy code in the browser with no setup required.",
+    benefits: [
+      "Supports 50+ programming languages",
+      "Real-time multiplayer coding collaboration",
+      "Browser-based environment on any device"
+    ],
+    link: "https://replit.com/edu"
+  },
+  {
+    category: "DEV TOOLS",
+    logo: "/logo/jetbrains.png",
+    title: "JetBrains",
+    description: "Suite of professional integrated development environments (IDEs) including IntelliJ, PyCharm, and WebStorm.",
+    benefits: [
+      "Free educational pack for all JetBrains IDEs",
+      "Supports Java, Python, JavaScript, C++, and more",
+      "Professional coding, debugging, and testing tools"
     ],
     link: "https://www.jetbrains.com/community/education/#students"
   },
   {
     category: "PRODUCTIVITY",
-    ref: "NOTION",
-    title: "Notion Plus Plan",
+    logo: "/logo/lucid.png",
+    title: "Lucidchart",
+    description: "Web-based diagramming software used for creating flowcharts, diagrams, and visual presentations.",
+    benefits: [
+      "Free education account upgrade",
+      "Create flowcharts, diagrams, and wireframes",
+      "Visual presentation and collaboration tools"
+    ],
+    link: "https://www.lucidchart.com/pages/usecase/education"
+  },
+  {
+    category: "PRODUCTIVITY",
+    logo: "/logo/notion.png",
+    title: "Notion",
     description: "Organize your schoolwork, notes, tasks, and life all in one clean, customizable workspace.",
     benefits: [
       "Free Plus plan upgrade",
       "Unlimited file uploads",
       "30-day page history"
     ],
-    link: "https://www.notion.so/product/notion-for-education"
-  },
-  {
-    category: "DESIGN",
-    ref: "CANVA",
-    title: "Canva Pro Education",
-    description: "Design anything in seconds with millions of premium templates, photos, fonts, and assets.",
-    benefits: [
-      "Access all premium templates",
-      "Brand kits and magic resize",
-      "Collaborate in real-time"
-    ],
-    link: "https://www.canva.com/education"
+    link: "https://www.notion.so/students"
   },
   {
     category: "LEARNING",
-    ref: "COURSERA",
-    title: "Coursera for Students",
-    description: "Learn in-demand skills from top companies and universities with guided projects and courses.",
+    logo: "/logo/zotero.png",
+    title: "Zotero",
+    description: "Free, open-source software for collecting, organizing, annotating, citing, and sharing research sources.",
     benefits: [
-      "One free course per year",
-      "Professional certificates",
-      "Learn at your own pace"
+      "Free open-source research manager",
+      "One-click citation capture via browser extension",
+      "Organize references by DOI, ISBN, or metadata"
     ],
-    link: "https://www.coursera.org/for-students"
-  },
-  {
-    category: "LIFESTYLE",
-    ref: "SPOTIFY",
-    title: "Spotify Student Discount",
-    description: "Get Spotify Premium with ad-free music, offline playback, and showtime bundle for students.",
-    benefits: [
-      "Ad-free music listening",
-      "Offline download support",
-      "Includes Hulu/Showtime bundle"
-    ],
-    link: "https://www.spotify.com/student"
+    link: "https://www.zotero.org"
   },
   {
     category: "DEV TOOLS",
-    ref: "AWS",
-    title: "AWS Educate",
-    description: "Cloud computing training, hands-on labs, and resources to build in-demand cloud skills.",
+    logo: "/logo/namecheap.png",
+    title: "Namecheap",
+    description: "Platform to buy domains, host websites, and manage SSL, email, and security tools for web development.",
     benefits: [
-      "Free hands-on cloud labs",
-      "AWS promotional credits",
-      "Access AWS job board"
+      "Free domain name offer for students",
+      "Free WHOIS privacy protection",
+      "Budget-friendly web hosting options"
     ],
-    link: "https://aws.amazon.com/education/awseducate"
-  },
-  {
-    category: "DESIGN",
-    ref: "FRAMER",
-    title: "Framer Education",
-    description: "Design and publish responsive websites visually with the speed of layout, styling, and motion.",
-    benefits: [
-      "Free Framer Pro site",
-      "Custom domains allowed",
-      "No Framer badge on site"
-    ],
-    link: "https://www.framer.com/academy"
+    link: "https://nc.me/"
   },
   {
     category: "LEARNING",
-    ref: "DUOLINGO",
-    title: "Duolingo Super",
-    description: "Learn languages faster with personalized practice, zero ads, and unlimited hearts for students.",
+    logo: "/logo/overleaf.png",
+    title: "Overleaf",
+    description: "Collaborative online LaTeX editor for writing, editing, and publishing scientific papers and documents.",
     benefits: [
-      "Unlimited practice hearts",
-      "Personalized mistake reviews",
-      "Ad-free learning experience"
+      "Free Pro features for participating universities",
+      "Real-time collaborative LaTeX editing",
+      "Rich template gallery for academic papers"
     ],
-    link: "https://www.duolingo.com"
+    link: "https://www.overleaf.com/edu"
+  },
+  {
+    category: "PRODUCTIVITY",
+    logo: "/logo/grammarly.png",
+    title: "Grammarly",
+    description: "AI-powered writing assistant offering real-time grammar, spelling, clarity, and tone improvements.",
+    benefits: [
+      "Grammarly for Education features",
+      "AI-powered writing assistance",
+      "Improves academic essay quality and communication"
+    ],
+    link: "https://www.grammarly.com/students"
+  },
+  {
+    category: "LEARNING",
+    logo: "/logo/wolframalpha.png",
+    title: "Wolfram Alpha Pro",
+    description: "Computational knowledge engine providing step-by-step solutions for math, physics, and engineering.",
+    benefits: [
+      "Free Pro account with .edu / .ac.in email",
+      "Step-by-step solutions for complex math & science",
+      "Access expert algorithms and technical knowledge base"
+    ],
+    link: "https://www.wolframalpha.com/pro-for-students"
+  },
+  {
+    category: "LEARNING",
+    logo: "/logo/educative.png",
+    title: "Educative",
+    description: "Text-based interactive learning platform tailor-made for software developers and engineers.",
+    benefits: [
+      "Interactive text-based courses without video fluff",
+      "Embedded in-browser code editors",
+      "Tailor-made software engineering paths"
+    ],
+    link: "https://www.educative.io"
+  },
+  {
+    category: "LEARNING",
+    logo: "/logo/scrimba.png",
+    title: "Scrimba",
+    description: "Interactive code-learning platform featuring screencasts where you can pause and edit code directly.",
+    benefits: [
+      "Interactive tutorials for React, Vue, Node, and Web Dev",
+      "Pause code cast and edit code in real-time",
+      "Hands-on web development practice"
+    ],
+    link: "https://scrimba.com/github-education"
+  },
+  {
+    category: "LEARNING",
+    logo: "/logo/datacamp.png",
+    title: "DataCamp",
+    description: "Self-paced, in-browser learning platform for data science, Python, R, SQL, and AI skills.",
+    benefits: [
+      "Unlimited access to DataCamp Premium for students",
+      "Interactive in-browser coding environments",
+      "Self-paced courses in Data Science, Python & AI"
+    ],
+    link: "https://www.datacamp.com/pricing/student"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/dell.png",
+    title: "Dell Student Store",
+    description: "Exclusive student discount program on Dell laptops, desktop computers, and tech accessories.",
+    benefits: [
+      "Seasonal student discounts on laptops",
+      "Special savings on desktops and monitors",
+      "Dedicated Dell student store deals"
+    ],
+    link: "https://www.dell.com/en-in/lp/students"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/hp.png",
+    title: "HP Education Store",
+    description: "Dedicated education discounts on HP laptops, desktop computers, printers, and accessories.",
+    benefits: [
+      "Discounted student pricing on HP laptops",
+      "Savings on printers and computer accessories",
+      "Exclusive education store offers"
+    ],
+    link: "https://www.hp.com/in-en/shop/education-store"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/apple.png",
+    title: "Apple Education Store",
+    description: "Special education pricing on MacBooks, iPads, and accessories for university students.",
+    benefits: [
+      "Discounts on MacBooks and iPads",
+      "Savings on Apple accessories",
+      "Seasonal back-to-school bundle deals"
+    ],
+    link: "https://www.apple.com/in-edu/store"
+  },
+  {
+    category: "PRODUCTIVITY",
+    logo: "/logo/notability.png",
+    title: "Notability",
+    description: "Intuitive digital note-taking application for iOS featuring audio syncing, PDF annotation, and AI tools.",
+    benefits: [
+      "50% off via Apple Edu store",
+      "Minimal, intuitive note-taking interface",
+      "Powerful AI tools to enhance learning"
+    ],
+    link: "https://www.gingerlabs.com/"
+  },
+  {
+    category: "PRODUCTIVITY",
+    logo: "/logo/dropbox.png",
+    title: "Dropbox Education",
+    description: "Secure cloud storage, backup, and collaboration tools tailored for managing coursework efficiently.",
+    benefits: [
+      "Student discount via school partnerships",
+      "Extra cloud storage capacity",
+      "File backup and secure collaboration tools"
+    ],
+    link: "https://www.dropbox.com/education"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/youtube.png",
+    title: "YouTube Premium Student",
+    description: "Ad-free YouTube experience with background playback, offline downloads, and YouTube Music.",
+    benefits: [
+      "1-month free trial for students",
+      "Ad-free video streaming & background play",
+      "Includes YouTube Music Premium",
+      "Offline video downloads on mobile devices"
+    ],
+    link: "https://www.youtube.com/premium/student"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/amazonprime.png",
+    title: "Amazon Prime Student",
+    description: "Student membership providing fast free delivery, Prime Video, Prime Music, and Prime Reading.",
+    benefits: [
+      "6 months of free Amazon Prime trial",
+      "Free fast shipping on eligible items",
+      "Access to Prime Video, Prime Music, and Prime Reading"
+    ],
+    link: "https://www.amazon.com/Amazon-Student/b?ie=UTF8&node=668781011"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/spotify.png",
+    title: "Spotify Premium Student",
+    description: "Discounted music and podcast streaming service with ad-free access and offline listening.",
+    benefits: [
+      "50% discount on Spotify Premium subscription",
+      "Ad-free access to over 70 million songs and podcasts",
+      "Personalized playlists and offline listening"
+    ],
+    link: "https://www.spotify.com/in-en/student/"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/imagica.png",
+    title: "Imagicaa College Deal",
+    description: "Theme park and water park destination in India featuring thrilling rides, attractions, and live events.",
+    benefits: [
+      "20% discount on Imagicaa Theme Park tickets",
+      "10% discount on Imagicaa Water Park tickets",
+      "Access to a range of thrilling rides and attractions"
+    ],
+    link: "https://www.imagicaaworld.com/offers/college-deal/"
+  },
+  {
+    category: "LIFESTYLE",
+    logo: "/logo/applemusic.png",
+    title: "Apple Music Student",
+    description: "Discounted Apple Music student subscription with ad-free listening and free Apple TV+ access.",
+    benefits: [
+      "Discounted student pricing for Apple Music",
+      "Full access to over 100 million songs ad-free",
+      "Includes limited-time free access to Apple TV+"
+    ],
+    link: "https://music.apple.com/in/student"
   }
 ];
-
-const getLogo = (ref: string, sizeClass = "w-10 h-10") => {
-  switch (ref) {
-    case 'GITHUB':
-      return (
-        <svg className={`${sizeClass} text-slate-100`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-        </svg>
-      );
-    case 'AZURE':
-      return (
-        <svg className={sizeClass} viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12.784.85l-7.79 13.567L9.9 18.067H22.75L12.784.85z" fill="#008ad7"/>
-          <path d="M1.25 18.067L9.04 4.496l3.895 6.784L5.14 23.15H1.25v-5.083z" fill="#50e6ff"/>
-          <path d="M9.9 18.067l3.894-6.783 7.79 11.866H9.9v-5.083z" fill="#005a9e"/>
-        </svg>
-      );
-    case 'PERPLEXITY':
-      return (
-        <svg className={`${sizeClass} text-[#39C0C8]`} fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 21m0 0l-.813-5.096M9 21h3m-3 0H6m9.813-5.096a12.048 12.048 0 003.062-7.904h-1.636a10.05 10.05 0 01-3.062 7.904m0 0L12 12m0 0L8.188 8.096A10.05 10.05 0 015.126 1.808h-1.636a12.048 12.048 0 003.062 7.904m9.262 6.192A9.972 9.972 0 0012 12m0 0a9.972 9.972 0 00-3.062-6.192M12 12V3m0 0L9.813 9.096m2.187-6.1V1.5" />
-        </svg>
-      );
-    case 'FIGMA':
-      return (
-        <svg className={sizeClass} viewBox="0 0 24 24" fill="none">
-          <path d="M8 2c-2.21 0-4 1.79-4 4s1.79 4 4 4h4V6c0-2.21-1.79-4-4-4z" fill="#F24E1E"/>
-          <path d="M8 10c-2.21 0-4 1.79-4 4s1.79 4 4 4h4v-8H8z" fill="#A259FF"/>
-          <path d="M16 10c0-2.21-1.79-4-4-4v8c2.21 0 4-1.79 4-4z" fill="#1ABC9C"/>
-          <path d="M12 18c0 2.21 1.79 4 4 4s4-1.79 4-4-1.79-4-4-4h-4v4z" fill="#FF7262"/>
-          <path d="M16 14c2.21 0 4-1.79 4-4s-1.79-4-4-4v8z" fill="#1ABC9C"/>
-        </svg>
-      );
-    case 'JETBRAINS':
-      return (
-        <svg className={sizeClass} viewBox="0 0 24 24" fill="currentColor">
-          <rect width="24" height="24" rx="4" fill="#000000"/>
-          <path d="M3 17.5L8.5 12L3.5 7L2 9.5L3 17.5Z" fill="#F42850"/>
-          <path d="M21 6.5L14 3L11 8.5L17.5 16.5L21 6.5Z" fill="#3D45C4"/>
-          <path d="M17.5 16.5L13.5 21L7.5 19.5L17.5 16.5Z" fill="#FFC800"/>
-          <path d="M3.5 7L11.5 12L15 4L5.5 3L3.5 7Z" fill="#9932CC"/>
-          <rect x="5.5" y="8" width="13" height="8" fill="#000000"/>
-          <text x="6.5" y="14" fill="#FFFFFF" fontSize="6.5" fontWeight="bold" fontFamily="monospace">JB</text>
-        </svg>
-      );
-    case 'NOTION':
-      return (
-        <svg className={`${sizeClass} text-slate-100`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M4.17 2.019c.14-.154.34-.23.633-.23h14.394c.154 0 .285.03.393.093a.526.526 0 0 1 .232.259l1.705 17.84c.03.353-.069.608-.299.764-.176.108-.431.162-.764.162H5.666a.823.823 0 0 1-.506-.135.533.533 0 0 1-.225-.39L3.064 3.03c0-.123.015-.231.045-.325a.862.862 0 0 1 .18-.328l.88-.358zm13.12 1.34H11.52v.896h2.247v11.666H8.625l-3.328-11.44-.067-.225h-1.42v.898h.81l2.97 10.354c.12.449.337.674.652.674h7.027v-.898h-2.247V4.257h4.25v-.898z" />
-        </svg>
-      );
-    case 'CANVA':
-      return (
-        <svg className={`${sizeClass} text-[#00C4CC]`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19c-.39.39-1.02.39-1.41 0L10.3 11.7c-.39-.39-.39-1.02 0-1.41l2.48-2.48c.39-.39 1.02-.39 1.41 0s.39 1.02 0 1.41L12.41 11l1.78 1.78c.38.39.38 1.03 0 1.41z" />
-        </svg>
-      );
-    case 'COURSERA':
-      return (
-        <svg className={`${sizeClass} text-[#0056D2]`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />
-        </svg>
-      );
-    case 'SPOTIFY':
-      return (
-        <svg className={`${sizeClass} text-[#1DB954]`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm5.49 14.42c-.22.36-.68.48-1.04.26-2.73-1.67-6.17-2.05-10.22-1.12-.41.09-.82-.16-.92-.57-.09-.41.16-.82.57-.92 4.43-1.01 8.23-.58 11.29 1.29.36.22.48.69.26 1.06zm1.47-2.73c-.28.45-.87.6-1.32.32-3.13-1.92-7.9-2.48-11.59-1.36-.51.15-1.05-.14-1.21-.65-.15-.51.14-1.05.65-1.21 4.22-1.28 9.5-1.1 13.12 1.13.45.27.6.86.32 1.32-.01.01 0 0 0 0zm.13-2.88C15.22 8.5 8.8 8.29 5.09 9.42c-.59.18-1.22-.16-1.4-.75-.18-.59.16-1.22.75-1.4 4.27-1.3 11.36-1.06 16.03 1.72.53.31.71.99.4 1.52-.31.53-.99.71-1.52.4z"/>
-        </svg>
-      );
-    case 'AWS':
-      return (
-        <svg className={`${sizeClass} text-[#FF9900]`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.69 13.59c-.44.29-1.01.07-1.16-.44-.24-.8-.92-1.47-1.8-1.59-.57-.08-1.18.17-1.48.65-.24.38-.22.88.06 1.25.32.42 1.01.69(1.62.59.39-.06.74-.29 1.05-.53.32-.24.73-.08.82.32.13.56-.25 1.09-.76 1.35a4.2 4.2 0 01-2.15.52c-1.59 0-3.03-.9-3.48-2.44a3.84 3.84 0 012.38-4.63c1.47-.56 3.19-.07 4.14 1.15.35.45.54 1.01.54 1.58.01.81-.35 1.53-1.08 1.97zm2.4-2.82l-.4.32a.4.4 0 01-.58-.06 3.97 3.97 0 00-3.03-1.35c-2.11 0-3.9 1.62-4.05 3.73-.13 1.8 1.14 3.42 2.93 3.69 1.53.23 3.03-.49 3.69-1.89a.4.4 0 01.53-.2l.46.22a.4.4 0 01.2.53C16.5 17.5 14.5 18.5 12 18.5c-3.59 0-6.5-2.91-6.5-6.5S8.41 5.5 12 5.5s6.5 2.91 6.5 6.5c0 1.1-.28 2.15-.79 3.08l-.12-.31z" />
-        </svg>
-      );
-    case 'FRAMER':
-      return (
-        <svg className={`${sizeClass} text-[#0055FF]`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M5 2h14v6H5zm0 6h14v6H11l-6-6zm6 6h8v8l-8-8z" />
-        </svg>
-      );
-    case 'DUOLINGO':
-      return (
-        <svg className={`${sizeClass} text-[#58CC02]`} fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
-        </svg>
-      );
-    default:
-      return (
-        <svg className={`${sizeClass} text-slate-400`} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 21m0 0l-.813-5.096M9 21h3m-3 0H6" />
-        </svg>
-      );
-  }
-};
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -272,11 +470,12 @@ export default function Home() {
 
   const filteredData = data.filter((platform) => {
     const matchesCategory = selectedCategory === 'ALL' || platform.category === selectedCategory;
+    const q = searchQuery.toLowerCase();
     const matchesSearch =
-      platform.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      platform.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      platform.ref.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      platform.benefits.some(benefit => benefit.toLowerCase().includes(searchQuery.toLowerCase()));
+      platform.title.toLowerCase().includes(q) ||
+      platform.description.toLowerCase().includes(q) ||
+      platform.category.toLowerCase().includes(q) ||
+      platform.benefits.some(benefit => benefit.toLowerCase().includes(q));
     return matchesCategory && matchesSearch;
   });
 
@@ -350,12 +549,10 @@ export default function Home() {
                 const isFlipped = flippedCardIndex === index;
                 return (
                   <div
-                    className="h-[390px] w-full [perspective:1000px] cursor-pointer select-none relative z-0 group"
+                    className="h-[300px] w-full [perspective:1000px] cursor-pointer select-none relative z-0 group"
                     key={index}
                     onClick={() => handleCardToggle(index)}
                   >
-                    {/* Green offset border behind card */}
-                    <div className="absolute top-3 left-3 w-full h-full border-2 border-[#58E2C5]/60 rounded-md transition-colors duration-300 pointer-events-none -z-10" />
 
                     <div className={`relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] ${
                       isFlipped ? "[transform:rotateY(180deg)]" : ""
@@ -363,10 +560,10 @@ export default function Home() {
                       {/* Front Side */}
                       <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#16274b] p-6 flex flex-col items-center justify-between [backface-visibility:hidden] hover:border-[#58E2C5]/30 transition-all duration-300 shadow-lg group">
                         <div className="flex flex-col items-center justify-center flex-grow py-4">
-                          <div className="w-24 h-24 rounded-md bg-[#0b121f] border border-slate-800 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:border-[#58E2C5]/20 group-hover:shadow-[0_0_25px_rgba(88,226,197,0.12)] transition-all duration-500">
-                            {getLogo(platform.ref, "w-14 h-14")}
+                          <div className="w-28 h-28 flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-500">
+                            <img src={platform.logo} alt={platform.title} className="w-16 h-16 object-contain" />
                           </div>
-                          <h2 className="text-[#CCD6F6] text-xl font-bold text-center group-hover:text-white transition-colors duration-300 px-4">
+                          <h2 className="text-[#CCD6F6] text-[22px] font-bold text-center group-hover:text-white transition-colors duration-300 px-4">
                             {platform.title}
                           </h2>
                         </div>
@@ -377,33 +574,33 @@ export default function Home() {
                       </div>
 
                       {/* Back Side */}
-                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#0e1626] p-5 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 hover:border-[#58E2C5]/20">
-                        <div>
+                      <div className="absolute inset-0 w-full h-full rounded-md border border-slate-800 bg-[#0e1626] p-4 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-xl transition-all duration-300 hover:border-[#58E2C5]/20 overflow-hidden">
+                        <div className="flex-1 overflow-hidden">
                           {/* Header Row */}
-                          <div className="flex justify-start items-center mb-3">
-                            <span className="bg-[#58E2C5]/10 border border-[#58E2C5]/20 text-[#58E2C5] text-[10px] font-bold tracking-wider px-2.5 py-1 rounded-md uppercase">
+                          <div className="flex justify-start items-center mb-2">
+                            <span className="bg-[#58E2C5]/10 border border-[#58E2C5]/20 text-[#58E2C5] text-[9px] font-bold tracking-wider px-2 py-0.5 rounded uppercase">
                               {platform.category}
                             </span>
                           </div>
 
                           {/* Title & Description */}
-                          <h2 className="text-[#CCD6F6] text-xl font-bold mb-1.5 tracking-tight">
+                          <h2 className="text-[#CCD6F6] text-sm font-bold mb-1 tracking-tight line-clamp-1">
                             {platform.title}
                           </h2>
-                          <p className="text-[#8892B0] text-xs leading-relaxed mb-3.5 line-clamp-3">
+                          <p className="text-[#8892B0] text-[11px] leading-snug mb-2 line-clamp-2">
                             {platform.description}
                           </p>
 
-                          {/* Chapter Benefits */}
-                          <div className="mb-4">
-                            <h3 className="text-[#8892B0]/80 text-[10px] font-bold tracking-widest uppercase mb-2">
-                              CHAPTER BENEFITS
+                          {/* Benefits */}
+                          <div>
+                            <h3 className="text-[#8892B0]/80 text-[9px] font-bold tracking-widest uppercase mb-1.5">
+                              BENEFITS
                             </h3>
-                            <ul className="space-y-1.5">
-                              {platform.benefits.map((benefit, bIndex) => (
-                                <li key={bIndex} className="flex items-start text-xs text-[#CCD6F6]">
-                                  <span className="text-[#58E2C5] font-semibold mr-2.5 select-none">&gt;</span>
-                                  <span className="leading-normal">{benefit}</span>
+                            <ul className="space-y-1">
+                              {platform.benefits.slice(0, 3).map((benefit, bIndex) => (
+                                <li key={bIndex} className="flex items-start text-[11px] text-[#CCD6F6]">
+                                  <span className="text-[#58E2C5] font-semibold mr-2 select-none">&gt;</span>
+                                  <span className="leading-tight line-clamp-1">{benefit}</span>
                                 </li>
                               ))}
                             </ul>
@@ -416,10 +613,10 @@ export default function Home() {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="w-full bg-[#182235] hover:bg-[#1b273f] text-[#CCD6F6] hover:text-[#58E2C5] border border-slate-800 hover:border-[#58E2C5]/30 font-bold py-2.5 px-4 rounded-md text-center text-[10px] tracking-widest transition-all duration-300 flex items-center justify-between cursor-pointer"
+                          className="w-full bg-[#182235] hover:bg-[#1b273f] text-[#CCD6F6] hover:text-[#58E2C5] border border-slate-800 hover:border-[#58E2C5]/30 font-bold py-2 px-3 rounded-md text-center text-[9px] tracking-widest transition-all duration-300 flex items-center justify-between cursor-pointer mt-2 shrink-0"
                         >
                           <span>REDEEM POWER</span>
-                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                          <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                           </svg>
                         </a>
